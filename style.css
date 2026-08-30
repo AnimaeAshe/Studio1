@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #0b0d1a;
+}
+
+/* 3 × 3 icon layout */
+
+.icon-grid {
+  width: min(78vw, 850px);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: clamp(25px, 4vw, 55px);
+}
+
+/* Individual icons */
+
+.dream-icon {
+  width: 100%;
+  aspect-ratio: 1;
+
+  object-fit: contain;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+/* Hover feedback */
+
+.dream-icon:hover {
+  transform: scale(1.07);
+
+  filter: drop-shadow(0 0 10px rgba(216, 208, 232, 0.25))
+    drop-shadow(0 0 22px rgba(117, 102, 154, 0.25));
+}
+
+/* Tablet */
+
+@media (max-width: 700px) {
+  .icon-grid {
+    width: 82vw;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 420px) {
+  .icon-grid {
+    width: 70vw;
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+}
