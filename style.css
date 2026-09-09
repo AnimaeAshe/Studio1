@@ -2,72 +2,93 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   min-height: 100vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: #0b0d1a;
+  background: #1a1a1a;
+
+  overflow-x: hidden;
 }
 
 /* 3 × 3 icon layout */
 
 .icon-grid {
-  width: min(78vw, 850px);
+  width: min(75vw, 820px);
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  gap: clamp(25px, 4vw, 55px);
+  gap: clamp(30px, 4vw, 60px);
+
+  padding: 50px 0;
 }
 
 /* Individual icons */
 
-.dream-icon {
+.system-icon {
   width: 100%;
   aspect-ratio: 1;
+
+  display: block;
 
   object-fit: contain;
 
   cursor: pointer;
 
+  user-select: none;
+
   transition:
-    transform 0.22s ease,
-    filter 0.22s ease;
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 /* Hover feedback */
 
-.dream-icon:hover {
-  transform: scale(1.07);
+.system-icon:hover {
+  transform: scale(1.06);
 
-  filter: drop-shadow(0 0 10px rgba(216, 208, 232, 0.25))
-    drop-shadow(0 0 22px rgba(117, 102, 154, 0.25));
+  filter: drop-shadow(0 0 8px rgba(180, 167, 214, 0.25))
+    drop-shadow(0 0 20px rgba(180, 167, 214, 0.15));
 }
 
 /* Tablet */
 
 @media (max-width: 700px) {
   .icon-grid {
-    width: 82vw;
+    width: 78vw;
 
     grid-template-columns: repeat(2, 1fr);
 
-    gap: 25px;
+    gap: 30px;
+
+    padding: 40px 0;
   }
 }
 
 /* Mobile */
 
 @media (max-width: 420px) {
+  body {
+    align-items: flex-start;
+  }
+
   .icon-grid {
-    width: 70vw;
+    width: 65vw;
 
     grid-template-columns: 1fr;
 
-    gap: 20px;
+    gap: 24px;
+
+    padding: 40px 0;
   }
 }
