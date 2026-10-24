@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en" data-layout="desktop">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Ashe O. reflects on a semester of audiovisual editing, responsive interaction and spatial storytelling in COMM2749 Digital Media Studio 1.">
+  <title>From Fragments to Worlds — Ashe O.</title>
+  <style>
+    :root {
+      --ink: #14251e;
+      --ink-soft: #31463d;
+      --paper: #f4f0e4;
+      --paper-deep: #e9e3d3;
+      --white: #fffdf7;
+      --signal: #f2b542;
+      --water: #9fc5c0;
+      --line: rgba(20, 37, 30, .19);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.55; }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
+    .skip-link { position: absolute; left: -10000px; top: 1rem; background: var(--white); padding: .75rem 1rem; z-index: 20; }
+    .skip-link:focus { left: 1rem; }
+    .shell { width: min(1380px, calc(100% - 72px)); margin: 0 auto; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; min-height: 76px; border-bottom: 1px solid var(--line); font-size: .77rem; letter-spacing: .12em; text-transform: uppercase; }
+    .masthead strong { font-size: .9rem; letter-spacing: .06em; }
+    .masthead nav { display: flex; gap: 1.35rem; }
+    .masthead a { text-decoration: none; }
+    .masthead a:hover { text-decoration: underline; }
+    .view-switch { display: flex; gap: .35rem; align-items: center; font-size: .68rem; color: #c6d0c5; }
+    .view-switch a { padding: .3rem .48rem; border: 1px solid rgba(255,255,255,.35); border-radius: 99px; }
+    .view-switch a[aria-current="page"] { color: var(--ink); background: var(--signal); border-color: var(--signal); }
+    .hero { background: var(--ink); color: var(--paper); overflow: hidden; position: relative; }
+    .hero-inner { min-height: 670px; display: grid; grid-template-columns: 1.03fr .97fr; align-items: center; gap: 4vw; padding: 70px 0 76px; position: relative; }
+    .eyebrow, .section-kicker { color: #7e9a8c; font-size: .72rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+    .hero h1 { max-width: 740px; margin: 1.2rem 0 1.45rem; font: 400 clamp(4.6rem, 8.8vw, 9rem)/.88 var(--serif); letter-spacing: -.07em; }
+    .hero h1 span { display: block; color: var(--signal); font-style: italic; }
+    .hero-intro { max-width: 540px; font-size: clamp(1rem, 1.25vw, 1.17rem); color: #d3d8cd; }
+    .intro { display: grid; grid-template-columns: .65fr 1.35fr; gap: 9vw; padding: 115px 0 105px; border-bottom: 1px solid var(--line); }
+    .intro h2, .reflection h2, .future h2 { margin: 0; font: 400 clamp(2.4rem, 4.5vw, 4.9rem)/.98 var(--serif); letter-spacing: -.055em; }
+    .intro-copy { max-width: 760px; font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.65; }
+    .intro-copy p { margin: 0 0 1.25rem; }
+    .intro-copy .lede { color: var(--ink-soft); font: 400 1.45em/1.25 var(--serif); }
+    .project { padding: 95px 0 102px; border-bottom: 1px solid var(--line); }
+    .project-head { display: grid; grid-template-columns: .62fr 1.38fr; gap: 6vw; margin-bottom: 2.4rem; align-items: end; }
+    .project-no { font: italic 400 clamp(3rem, 6vw, 6rem)/1 var(--serif); color: #9a9c83; }
+    .project h2 { margin: .4rem 0 0; font: 400 clamp(2.5rem, 5.2vw, 5.8rem)/.98 var(--serif); letter-spacing: -.06em; }
+    .project-deck { max-width: 700px; margin: .8rem 0 0; color: var(--ink-soft); font-size: 1.06rem; }
+    .project-body { display: grid; grid-template-columns: 1.06fr .94fr; gap: 6vw; align-items: start; }
+    .project-body.reverse { grid-template-columns: .94fr 1.06fr; }
+    .project-body.reverse .visual { order: 2; }
+    .project-body.reverse .writing { order: 1; }
+    .visual { min-width: 0; }
+    .writing { max-width: 590px; }
+    .writing h3 { margin: 0 0 .8rem; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: #6d7d6d; }
+    .writing p { margin: 0 0 1.1rem; }
+    .writing .pull { margin: 1.8rem 0; padding: .2rem 0 .2rem 1.25rem; border-left: 3px solid var(--signal); color: var(--ink-soft); font: 400 1.55rem/1.3 var(--serif); }
+    .link-row { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.65rem; }
+    .button { display: inline-flex; align-items: center; gap: .7rem; padding: .78rem 1rem; border: 1px solid var(--ink); border-radius: 2px; text-decoration: none; font-size: .77rem; font-weight: 700; letter-spacing: .04em; transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .button:hover { color: var(--paper); background: var(--ink); transform: translateY(-2px); }
+    .button .arrow { color: #bd7b0d; font-size: 1rem; }
+    .film-panel { background: #1a2823; color: var(--paper); padding: 14px; box-shadow: 12px 12px 0 var(--paper-deep); }
+    .film-panel iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #0d1713; }
+    .film-caption { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem .25rem .05rem; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #c0c8bc; }
+    .note { margin-top: 1rem; font-size: .78rem; color: #66776a; }
+    .system-panel { padding: clamp(1.2rem, 3vw, 2.4rem); color: #f5eedf; background: #1c1c1b; box-shadow: 12px 12px 0 var(--paper-deep); }
+    .system-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: #a8a28f; font-size: .7rem; text-transform: uppercase; letter-spacing: .16em; }
+    .system-title { margin: .7rem 0 1.3rem; font: 400 clamp(1.8rem, 3.5vw, 3.6rem)/1 var(--serif); letter-spacing: -.04em; }
+    .chess-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+    .icon-tile { position: relative; display: grid; place-items: center; min-width: 0; min-height: clamp(72px, 10vw, 122px); padding: 0; overflow: hidden; border: 0; background: #292a27; cursor: pointer; }
+    .icon-tile img { width: 100%; height: 100%; max-height: 122px; object-fit: contain; position: absolute; inset: 0; transition: opacity .18s ease, transform .18s ease; }
+    .icon-tile img:last-child { opacity: 0; }
+    .icon-tile:hover img:first-child, .icon-tile:focus-visible img:first-child, .icon-tile:active img:first-child { opacity: 0; }
+    .icon-tile:hover img:last-child, .icon-tile:focus-visible img:last-child, .icon-tile:active img:last-child { opacity: 1; }
+    .system-foot { display: flex; justify-content: space-between; margin-top: 1rem; padding-top: .7rem; border-top: 1px solid #525047; color: #a8a28f; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+    .stage-card { background: var(--ink); color: var(--paper); padding: clamp(1.1rem, 2.6vw, 2rem); min-height: 400px; position: relative; overflow: hidden; box-shadow: 12px 12px 0 var(--paper-deep); }
+    .stage-card::before { content: ""; position: absolute; inset: 0; opacity: .19; background: repeating-linear-gradient(0deg, transparent 0 34px, rgba(255,255,255,.15) 35px), repeating-linear-gradient(90deg, transparent 0 34px, rgba(255,255,255,.08) 35px); }
+    .stage-list { position: relative; z-index: 1; display: grid; gap: 0; height: 100%; }
+    .stage { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: .8rem; min-height: 83px; border-bottom: 1px solid rgba(244,240,228,.23); }
+    .stage:last-child { border: 0; }
+    .stage-index { color: var(--signal); font-size: .7rem; letter-spacing: .12em; }
+    .stage strong { display: block; font: 400 1.3rem/1.1 var(--serif); }
+    .stage small { color: #afc0b5; font-size: .69rem; }
+    .stage-mark { width: 34px; height: 34px; border: 1px solid rgba(244,240,228,.5); border-radius: 50%; display: grid; place-items: center; font-size: .75rem; color: var(--signal); }
+    .stage:nth-child(3) .stage-mark { background: var(--signal); color: var(--ink); border-color: var(--signal); }
+    .stage:nth-child(4) .stage-mark { background: var(--water); color: var(--ink); border-color: var(--water); }
+    .sound-strip { position: relative; z-index: 1; display: flex; align-items: center; gap: .8rem; margin-top: 1rem; color: #c6d0c5; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+    .wave { height: 18px; flex: 1; background: linear-gradient(90deg, transparent, var(--signal), transparent); clip-path: polygon(0 48%, 5% 48%, 7% 18%, 9% 82%, 12% 30%, 15% 72%, 18% 47%, 23% 47%, 26% 5%, 29% 95%, 33% 30%, 36% 70%, 40% 48%, 50% 48%, 54% 35%, 57% 68%, 62% 46%, 70% 46%, 74% 40%, 77% 62%, 80% 47%, 100% 47%, 100% 52%, 80% 52%, 77% 68%, 74% 45%, 70% 53%, 62% 53%, 57% 74%, 54% 41%, 50% 53%, 40% 53%, 36% 76%, 33% 36%, 29% 100%, 26% 10%, 23% 53%, 18% 53%, 15% 78%, 12% 36%, 9% 88%, 7% 25%, 5% 53%, 0 53%); }
+    .practice { padding: 105px 0 115px; background: var(--paper-deep); }
+    .practice-head { display: flex; justify-content: space-between; gap: 3rem; align-items: end; margin-bottom: 2.8rem; }
+    .practice h2 { max-width: 650px; margin: .55rem 0 0; font: 400 clamp(2.5rem, 5vw, 5.4rem)/.98 var(--serif); letter-spacing: -.06em; }
+    .practice-head p { max-width: 390px; margin: 0; color: var(--ink-soft); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .step { padding: 1.2rem 1.4rem 0 0; margin-right: 1.4rem; border-right: 1px solid var(--line); }
+    .step:last-child { border: 0; margin: 0; }
+    .step .n { color: #a07832; font: italic 1.4rem var(--serif); }
+    .step h3 { margin: .65rem 0 .35rem; font: 400 1.45rem var(--serif); }
+    .step p { margin: 0; font-size: .9rem; color: var(--ink-soft); }
+    .course-arc { padding: 96px 0 104px; background: var(--ink); color: var(--paper); }
+    .course-arc h2 { max-width: 760px; margin: .55rem 0 0; font: 400 clamp(2.5rem, 5vw, 5.2rem)/.98 var(--serif); letter-spacing: -.06em; }
+    .course-arc .section-kicker { color: var(--water); }
+    .course-arc-intro { max-width: 650px; margin: 1.2rem 0 0; color: #c9d2c8; }
+    .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2.6rem; border: 1px solid rgba(244,240,228,.22); }
+    .phase { min-width: 0; padding: clamp(1.35rem, 2.8vw, 2.25rem); }
+    .phase + .phase { border-left: 1px solid rgba(244,240,228,.22); }
+    .phase time { color: var(--signal); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .phase h3 { margin: .8rem 0 .55rem; font: 400 clamp(1.55rem, 2.2vw, 2.2rem)/1.1 var(--serif); }
+    .phase p { margin: 0; color: #c9d2c8; font-size: .9rem; }
+    .phase .evidence { margin-top: 1.1rem; color: #9fc5c0; font-size: .73rem; letter-spacing: .08em; text-transform: uppercase; }
+    .course-arc .arc-note { margin: 1.4rem 0 0; color: #c9d2c8; font-size: .82rem; }
+    .reflection { display: grid; grid-template-columns: .65fr 1.35fr; gap: 9vw; padding: 112px 0; }
+    .reflection-copy { max-width: 760px; }
+    .reflection-copy p { margin: 0 0 1.15rem; }
+    .reflection-copy .lead { font: 400 clamp(1.55rem, 2.5vw, 2.5rem)/1.27 var(--serif); }
+    .feedback { margin: 2rem 0; padding: 1.1rem 1.3rem; background: #e7dfcb; border-left: 3px solid #bc7e1f; font-size: .92rem; }
+    .future { padding: 86px 0 98px; color: var(--paper); background: var(--ink); }
+    .future-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 8vw; align-items: start; }
+    .future .section-kicker { color: #a6b6a6; }
+    .future h2 { color: var(--paper); }
+    .future-copy { max-width: 680px; }
+    .future-copy p { margin: 0 0 1.2rem; color: #d6dbd1; font-size: 1.1rem; }
+    .future-copy strong { color: var(--signal); font-weight: 500; }
+    .archive { padding: 54px 0 62px; background: #d9dfd2; }
+    .archive-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+    .archive h2 { margin: .3rem 0; font: 400 clamp(1.8rem, 3vw, 3rem)/1 var(--serif); }
+    .archive p { margin: .5rem 0 0; font-size: .9rem; color: var(--ink-soft); }
+    .archive .button { white-space: nowrap; }
+    footer { background: var(--ink); color: #bfc9bd; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 2rem; align-items: center; min-height: 90px; font-size: .72rem; letter-spacing: .09em; text-transform: uppercase; }
+    footer a { color: var(--paper); }
+    .fine-print { color: #91a196; letter-spacing: .02em; text-transform: none; }
+    @media (max-width: 860px) {
+      .shell { width: min(100% - 40px, 680px); }
+      .hero-inner, .intro, .project-head, .project-body, .project-body.reverse, .future-grid { grid-template-columns: 1fr; }
+      .hero-inner { padding: 70px 0 54px; gap: 1rem; }
+      .hero h1 { font-size: clamp(4rem, 18vw, 7rem); }
+      .intro, .reflection { grid-template-columns: 1fr; gap: 1.5rem; padding: 75px 0; }
+      .project { padding: 68px 0 76px; }
+      .project-head { gap: .5rem; margin-bottom: 1.6rem; }
+      .project-no { font-size: 3.8rem; }
+      .project-body, .project-body.reverse { gap: 2rem; }
+      .project-body.reverse .visual, .project-body.reverse .writing { order: initial; }
+      .practice { padding: 75px 0; }
+      .practice-head { display: block; }
+      .practice-head p { margin-top: 1rem; }
+      .steps { grid-template-columns: repeat(2, 1fr); row-gap: 1.6rem; }
+      .step:nth-child(2) { border: 0; }
+      .phase-grid { grid-template-columns: 1fr; }
+      .phase + .phase { border-left: 0; border-top: 1px solid rgba(244,240,228,.22); }
+      .future { padding: 72px 0; }
+      .future-grid { gap: 1.5rem; }
+      .archive-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: calc(100% - 32px); }
+      .masthead { min-height: 62px; }
+      .masthead nav { gap: .7rem; }
+      .masthead nav a:nth-child(2) { display: none; }
+      .hero-inner { min-height: auto; padding: 57px 0 40px; }
+      .hero h1 { font-size: clamp(3.4rem, 18vw, 5.4rem); }
+      .intro h2, .future h2 { font-size: 2.65rem; }
+      .project h2 { font-size: 2.75rem; }
+      .chess-grid { gap: .4rem; }
+      .chess-grid span { min-height: 76px; font-size: 2.8rem; }
+      .stage-card { min-height: 370px; }
+      .stage { grid-template-columns: 32px 1fr auto; gap: .45rem; }
+      .stage strong { font-size: 1.13rem; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); margin: 0; padding: 0 0 1.1rem; }
+      .step:last-child { border: 0; }
+      .footer-inner { padding: 1.25rem 0; flex-direction: column; align-items: start; justify-content: center; }
+    }
+    html[data-layout="mobile"] .hero-inner,
+    html[data-layout="mobile"] .intro,
+    html[data-layout="mobile"] .project-head,
+    html[data-layout="mobile"] .project-body,
+    html[data-layout="mobile"] .project-body.reverse,
+    html[data-layout="mobile"] .future-grid { grid-template-columns: 1fr; }
+    html[data-layout="mobile"] .shell { width: min(calc(100% - 40px), 680px); }
+    html[data-layout="mobile"] .hero-inner { min-height: auto; padding: 57px 0 40px; gap: 1rem; }
+    html[data-layout="mobile"] .hero h1 { font-size: clamp(3.4rem, 18vw, 5.4rem); }
+    html[data-layout="mobile"] .intro, html[data-layout="mobile"] .reflection { grid-template-columns: 1fr; gap: 1.5rem; padding: 75px 0; }
+    html[data-layout="mobile"] .project-head { gap: .5rem; margin-bottom: 1.6rem; }
+    html[data-layout="mobile"] .project-body, html[data-layout="mobile"] .project-body.reverse { gap: 2rem; }
+    html[data-layout="mobile"] .project-body.reverse .visual, html[data-layout="mobile"] .project-body.reverse .writing { order: initial; }
+    html[data-layout="mobile"] .practice-head { display: block; }
+    html[data-layout="mobile"] .practice-head p { margin-top: 1rem; }
+    html[data-layout="mobile"] .steps { grid-template-columns: 1fr; }
+    html[data-layout="mobile"] .phase-grid { grid-template-columns: 1fr; }
+    html[data-layout="mobile"] .phase + .phase { border-left: 0; border-top: 1px solid rgba(244,240,228,.22); }
+    html[data-layout="mobile"] .step, html[data-layout="mobile"] .step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); margin: 0; padding: 0 0 1.1rem; }
+    html[data-layout="mobile"] .step:last-child { border: 0; }
+    html[data-layout="mobile"] .future-grid { gap: 1.5rem; }
+    html[data-layout="mobile"] .archive-inner, html[data-layout="mobile"] .footer-inner { align-items: start; flex-direction: column; }
+    html[data-layout="mobile"] .masthead nav a:nth-child(2) { display: none; }
+    @media (max-width: 560px) {
+      html[data-layout="desktop"] .steps { grid-template-columns: 1fr; }
+      html[data-layout="mobile"] .shell { width: calc(100% - 32px); }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+    /* Monochrome editorial treatment */
+    :root {
+      --ink: #111;
+      --ink-soft: #414141;
+      --paper: #f1f1ef;
+      --paper-deep: #e3e3e1;
+      --white: #fff;
+      --signal: #d0d0ce;
+      --water: #a7a7a5;
+      --line: rgba(17, 17, 17, .17);
+    }
+    html, body { background: var(--paper); }
+    .hero, .course-arc, .future, footer { background-color: #111; }
+    .hero { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.052'/%3E%3C/svg%3E"), radial-gradient(ellipse at 76% 38%, rgba(255,255,255,.09), transparent 48%), radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.4) 100%), linear-gradient(118deg, #101010 0%, #1a1a1a 58%, #101010 100%); background-size: 180px 180px, auto, auto, auto; }
+    .hero::before { content: ""; position: absolute; z-index: 0; top: -12%; right: -6%; width: min(68vw, 850px); height: 118%; background: radial-gradient(ellipse at center, rgba(255,255,255,.085), transparent 64%); filter: blur(34px); pointer-events: none; }
+    .hero > .shell { position: relative; z-index: 1; }
+    .hero-inner { z-index: 1; grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 100px 0 112px; }
+    .icon-tile img { filter: grayscale(1); }
+    .eyebrow, .section-kicker, .writing h3, .future .section-kicker { color: #777; }
+    .hero .eyebrow, .hero .section-kicker { color: #aaa; }
+    .hero h1 span { background: linear-gradient(125deg, #f4f4f2 12%, #aaa 78%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .stage-index, .stage-mark, .phase time, .future-copy strong { color: #ddd; }
+    .hero-intro, .course-arc-intro, .phase p, .course-arc .arc-note,
+    .future-copy p, footer, .stage small, .sound-strip { color: #c5c5c3; }
+    .project-no, .step .n { color: #777; }
+    .button .arrow { color: #555; }
+    .film-panel, .system-panel { background-color: rgba(25,25,25,.68); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E"), linear-gradient(135deg, rgba(255,255,255,.12), transparent 42%, rgba(255,255,255,.035)); background-size: 180px 180px, auto; backdrop-filter: blur(24px) saturate(.62); -webkit-backdrop-filter: blur(24px) saturate(.62); border: 1px solid rgba(255,255,255,.25); color: #eee; }
+    .film-panel iframe { background: #080808; }
+    .film-caption, .system-top, .system-foot { color: #aaa; }
+    .icon-tile { background: #292929; }
+    .system-foot { border-color: #555; }
+    .stage-card { background-color: rgba(21,21,21,.68); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E"), linear-gradient(135deg, rgba(255,255,255,.12), transparent 45%, rgba(255,255,255,.035)); background-size: 180px 180px, auto; backdrop-filter: blur(24px) saturate(.62); -webkit-backdrop-filter: blur(24px) saturate(.62); border: 1px solid rgba(255,255,255,.25); }
+    .course-arc, .future, footer { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E"), radial-gradient(ellipse at 85% 15%, rgba(255,255,255,.045), transparent 48%); background-size: 180px 180px, auto; }
+    .stage:nth-child(3) .stage-mark, .stage:nth-child(4) .stage-mark { background: #ddd; color: #111; border-color: #ddd; }
+    .wave { background: linear-gradient(90deg, transparent, #c8c8c8, transparent); }
+    .practice { background: #e5e5e3; }
+    .course-arc .section-kicker, .phase .evidence { color: #aaa; }
+    .phase-grid, .phase + .phase { border-color: rgba(255,255,255,.2); }
+    .feedback { background: #e1e1df; border-left-color: #555; }
+    .archive { background: #e2e2e0; }
+    .fine-print { color: #aaa; }
+    .film-panel, .system-panel, .stage-card { box-shadow: 0 26px 65px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.08) inset; }
+    ::selection { color: #fff; background: #555; }
+    @media (max-width: 860px) { .hero-inner { min-height: 0; padding: 70px 0 72px; } }
+    @media (max-width: 560px) { .hero-inner { padding: 57px 0 64px; } }
+    html[data-layout="mobile"] .hero-inner { min-height: 0; padding: 57px 0 64px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hero" id="top">
+    <div class="shell">
+      <div class="masthead">
+        <a href="#top" aria-label="Ashe O., top of page"><strong>Ashe O.</strong></a>
+        <nav aria-label="Main navigation">
+          <a href="#work">Work</a>
+          <a href="#practice">Practice</a>
+          <a href="#course-arc">Arc</a>
+          <a href="#future">Next</a>
+        </nav>
+        <div class="view-switch" aria-label="Choose page layout">
+          <span>View</span>
+          <a href="?layout=desktop" data-view="desktop">Desktop</a>
+          <a href="?layout=mobile" data-view="mobile">Mobile</a>
+        </div>
+      </div>
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">COMM2749 · Digital Media Studio 1 · 2026</div>
+          <h1>From fragments <span>to worlds.</span></h1>
+          <p class="hero-intro">Over twelve weeks, I moved from editing moments into a self-portrait, to designing a responsive system of icons, to building a space a player could move through. This is a record of how I learned to make meaning through sequence, interaction and place.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="shell intro" id="opening" aria-labelledby="opening-title">
+      <div>
+        <div class="section-kicker">01 / Starting point</div>
+        <h2 id="opening-title">I came to make things, not just analyse them.</h2>
+      </div>
+      <div class="intro-copy">
+        <p class="lede">I began this program after studying Data Science. I already knew how to work with editing software; what I wanted to understand was how to choose a form because it could say something.</p>
+        <p>I am drawn to games, digital culture, illustration and virtual environments. I joined the course in Week 3, so my first stretch was also a catch-up: I had no draft to share yet and needed to turn scattered ideas into a workable plan. Storyboarding helped me find a direction, and sound design showed me that a transition can carry meaning even when two images do not belong to the same time or place.</p>
+        <p>Across the semester, my question shifted: first, how can images connect parts of a life? Then, how can a visual system invite a response? Finally, how can a designed space make a player feel a change by moving through it?</p>
+      </div>
+    </section>
+
+    <section class="shell project" id="work" aria-labelledby="as1-title">
+      <div class="project-head">
+        <div><div class="section-kicker">Project 01 · Video self-portrait</div><div class="project-no">01</div></div>
+        <div>
+          <h2 id="as1-title">Campus Life</h2>
+          <p class="project-deck">A two-minute portrait assembled from everyday fragments: friends, study, drawing, city details and quieter observations of Melbourne.</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="visual">
+          <div class="film-panel">
+            <iframe src="https://www.youtube-nocookie.com/embed/buGP9XVc-8w" title="Campus Life — video self-portrait by Ashe O." loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="film-caption"><span>Studio1_Assignment1</span><span>02:08 · 2026</span></div>
+          </div>
+        </div>
+        <div class="writing">
+          <h3>What I chose to show</h3>
+<p>The campus, my friends, drawing and an ACG merchandise shop each show a different part of my life. I wanted quieter moments alongside social ones, because spending time alone also belongs in this portrait. Drawing connects my everyday habits with the hope of doing work I enjoy in the future.</p>
+<p>I filmed drawing near desk height to make it feel quiet and close, and campus at walking height to share my viewpoint. Warm-looking locations and space around the subject kept the images relaxed. I wanted these qualities to come from the footage itself.</p>
+<p>Sound sometimes suggests an inner feeling while the image shows an ordinary activity. Letting it begin before a cut or linger afterwards connects different places, like a memory continuing into the next moment. Longer shots at emotional pauses, especially after quicker cuts, give the edit room to breathe. I learned to follow the feeling of a moment as well as what happened.</p>
+<div class="link-row"><a class="button" href="https://www.youtube.com/watch?v=buGP9XVc-8w" target="_blank" rel="noreferrer">Watch the film <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/week2/" target="_blank" rel="noreferrer">Storyboard & sound notes <span class="arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell project" aria-labelledby="as2-title">
+      <div class="project-head">
+        <div><div class="section-kicker">Project 02 · Responsive icon system</div><div class="project-no">02</div></div>
+        <div>
+          <h2 id="as2-title">System</h2>
+          <p class="project-deck">Nine flat, unified icons use chess-piece forms to explore how a system can communicate through visual relationships and responsive feedback.</p>
+        </div>
+      </div>
+      <div class="project-body reverse">
+        <div class="visual">
+          <div class="system-panel" role="group" aria-label="A nine-icon chess system in grayscale on a charcoal background">
+            <div class="system-top"><span>Icon suite / 09 forms</span><span>AS2</span></div>
+            <div class="system-title">Movement inside a system.</div>
+            <div class="chess-grid" role="group" aria-label="Nine icons from the System project. Hover, focus or click an icon to preview its alternate state and sound.">
+              <button class="icon-tile" type="button" data-audio="assets/sounds/king.mp3" data-volume="0.6" aria-label="King icon, default and hover states"><img src="assets/system/svg-icons/king_1.svg" alt=""><img src="assets/system/svg-icons/king_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/queen.mp3" data-volume="0.2" aria-label="Queen icon, default and hover states"><img src="assets/system/svg-icons/queen_1.svg" alt=""><img src="assets/system/svg-icons/queen_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/knight.mp3" data-volume="0.4" aria-label="Knight icon, default and hover states"><img src="assets/system/svg-icons/knight_1.svg" alt=""><img src="assets/system/svg-icons/knight_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/rook.mp3" data-volume="0.5" aria-label="Rook icon, default and hover states"><img src="assets/system/svg-icons/rook_1.svg" alt=""><img src="assets/system/svg-icons/rook_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/bishop.mp3" data-volume="0.5" aria-label="Bishop icon, default and hover states"><img src="assets/system/svg-icons/bishop_1.svg" alt=""><img src="assets/system/svg-icons/bishop_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/deck.wav" data-volume="0.4" aria-label="Deck icon, default and hover states"><img src="assets/system/svg-icons/deck_1.svg" alt=""><img src="assets/system/svg-icons/deck_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/attack.wav" data-volume="0.3" aria-label="Attack icon, default and hover states"><img src="assets/system/svg-icons/attack_1.svg" alt=""><img src="assets/system/svg-icons/attack_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/aim.mp3" data-volume="0.5" aria-label="Aim icon, default and hover states"><img src="assets/system/svg-icons/aim_1.svg" alt=""><img src="assets/system/svg-icons/aim_2.svg" alt=""></button>
+              <button class="icon-tile" type="button" data-audio="assets/sounds/turn.mp3" data-volume="0.2" aria-label="Turn icon, default and hover states"><img src="assets/system/svg-icons/turn_1.svg" alt=""><img src="assets/system/svg-icons/turn_2.svg" alt=""></button>
+            </div>
+            <div class="system-foot"><span>Image swap + sound</span><span>Hover / click</span></div>
+          </div>
+        </div>
+        <div class="writing">
+          <h3>Finding a shared language</h3>
+<p>My apple and chess thumbnails explored different directions. Chess gave me a stronger connection between the symbols: each piece has a different role within the same system. Flattening the sketches made their edges and scale more consistent, although some of the loose character of the drawing disappeared.</p>
+<p>I compared monochromatic, analogous, complementary and triadic palettes. The finished page uses cream on charcoal, with violet for the active state. Keeping that change consistent across the set felt clearer than giving every icon a different colour. The preview here follows the folio’s monochrome treatment; the original page keeps the cream and violet palette.</p>
+<p>Each icon has an individual sound and alternate image. The repeated interaction helps them feel related, while the sounds suggest different characters and actions. Some abstract symbols are less immediately recognisable than the chess pieces. Next time, I would compare what someone recognises at a small size before polishing every outline.</p>
+<div class="link-row"><a class="button" href="https://animaeashe.github.io/Studio1/" target="_blank" rel="noreferrer">Explore all nine icons <span class="arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell project" aria-labelledby="as3-title">
+      <div class="project-head">
+        <div><div class="section-kicker">Project 03 · Navigable 3D environment</div><div class="project-no">03</div></div>
+        <div>
+          <h2 id="as3-title">Descent</h2>
+          <p class="project-deck">A first-person environment moves from ordered display into a submerged, collapsing world. The transformation unfolds through architecture, light, sound and the player's route.</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="visual">
+          <div class="stage-card" role="img" aria-label="Four encounter stages from Arrival through Order and Descent to underwater Collapse">
+            <div class="stage-list">
+              <div class="stage"><span class="stage-index">01</span><div><strong>Arrival</strong><small>Threshold / orientation</small></div><span class="stage-mark">↘</span></div>
+              <div class="stage"><span class="stage-index">02</span><div><strong>Order museum</strong><small>Display / measured rhythm</small></div><span class="stage-mark">▦</span></div>
+              <div class="stage"><span class="stage-index">03</span><div><strong>Descent</strong><small>10-second rumble / music fades</small></div><span class="stage-mark">↓</span></div>
+              <div class="stage"><span class="stage-index">04</span><div><strong>Underwater collapse</strong><small>Deep Sea · Calm · Bubbles</small></div><span class="stage-mark">≈</span></div>
+            </div>
+            <div class="sound-strip"><span>Rumble</span><div class="wave" aria-hidden="true"></div><span>Water</span></div>
+          </div>
+        </div>
+        <div class="writing">
+          <h3>Building a place to explore</h3>
+<p>I began with a pavilion and garden corridor, with birds and wind outside. The gallery is more controlled: a geometric sculpture is fenced off and lit from below. Passing through a dark opening and dropping into a world of whale and pterosaur skeletons breaks that order. I wanted the final space to feel strange and much larger than the place before it.</p>
+<p>In the film I controlled the frame; here the player can stop, turn back or look away. Working at eye level made scale and visibility more important than they seemed from above. Sound changes with the setting too: a ten-second rumble and fading music lead into the underwater layers.</p>
+<p>In my friend’s recorded test, they approached the sculpture, looked up, and explored both skeletons. The main landmarks drew attention, but the recording alone cannot tell me whether the story was understood. Turning towards the edge also exposed a bright outer horizon. I would refine that boundary and the lighting so the underwater atmosphere holds up from more directions.</p>
+<div class="feedback"><strong>What the feedback changed:</strong> my tutor liked the crafted spaces and transitions, but found too little explanation of the idea and development. That made me realise that showing the final build was only part of presenting the work. The journal now explains the route, sound decisions and what the recorded test revealed.</div>
+<div class="link-row"><a class="button" href="https://play.unity.com/en/games/258a7515-2c7e-4d07-a147-874cfa64c1a3/as3" target="_blank" rel="noreferrer">Play the Unity build <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://www.youtube.com/watch?v=vzTPUF3kqrc" target="_blank" rel="noreferrer">Watch the 2:15 play-through <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer">Process journal <span class="arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice" id="practice" aria-labelledby="practice-title">
+      <div class="shell">
+        <div class="practice-head">
+          <div><div class="section-kicker">How my decisions developed</div><h2 id="practice-title">From learning the tools to choosing the form.</h2></div>
+          <p>The course kept bringing me back to the same practical question: what should the audience do, notice or feel next? The answer changed with the medium.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><span class="n">01</span><h3>Storyboard</h3><p>Turn a loose idea into a sequence. Decide what each shot contributes before the edit grows into a collection of attractive moments.</p></article>
+          <article class="step"><span class="n">02</span><h3>Bridge</h3><p>Use rhythm and sound to connect discontinuous images. Let laughter carry into waves, then allow the quieter shot to breathe.</p></article>
+          <article class="step"><span class="n">03</span><h3>Respond</h3><p>Give each icon a distinct but coherent visual and audio response. Interaction should clarify the system, not interrupt it.</p></article>
+          <article class="step"><span class="n">04</span><h3>Navigate</h3><p>Shape a route through encounters. Test whether layout, scale, light and sound prepare the player for each change.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell" aria-labelledby="process-title" style="padding:70px 0">
+      <div class="section-kicker">A few decisions behind the work</div>
+      <h2 id="process-title" style="font:400 clamp(2rem,4vw,3.5rem)/1.1 Georgia,serif">What the process helped me see.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px">
+        <figure style="margin:0"><img src="assets/week4/assignment2-system-king-queen-knight.jpg" alt="Thumbnail sketches comparing different crown and knight silhouettes" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#eee"><figcaption><strong>Sketching the system.</strong> Comparing silhouettes on one sheet made the differences between related pieces easier to see.</figcaption></figure>
+        <figure style="margin:0"><img src="assets/process/colour-study.png" alt="Four colour harmony studies: monochromatic, analogous, complementary and triadic" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#eee"><figcaption><strong>Keeping a shared palette.</strong> The colour study helped compare a quiet base with a more noticeable interaction colour.</figcaption></figure>
+        <figure style="margin:0"><img src="assets/process/unity-corridor.png" alt="Unity editor showing the arched garden corridor and an eye-level camera preview" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#181818"><figcaption><strong>Looking from inside.</strong> The camera preview helped compare the scene layout with what the player could actually see.</figcaption></figure>
+        <figure style="margin:0"><img src="assets/process/playtest-boundary.png" alt="Frame from the friend's recorded playtest showing the bright boundary beyond the final environment" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#181818"><figcaption><strong>A view I had overlooked.</strong> The recorded test exposed a bright outer horizon. Refining that boundary would help sustain the underwater atmosphere.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="course-arc" id="course-arc" aria-labelledby="course-arc-title">
+      <div class="shell">
+        <div class="section-kicker">Weeks 4–12 · Course sequence</div>
+        <h2 id="course-arc-title">Each new medium asked for a new kind of evidence.</h2>
+        <p class="course-arc-intro">The later modules map a progression from making a visual idea coherent, to shaping a navigable experience, to explaining the practice that connects the work.</p>
+        <div class="phase-grid">
+          <article class="phase">
+            <time>Weeks 4–6 · Assignment 2</time>
+            <h3>Concept → system</h3>
+            <p>Design thinking and thumbnails established intent; shape, colour and flat design helped unify the icon set; HTML, image swaps and sound made the symbols responsive.</p>
+            <div class="evidence">Nine icons · visual + audio feedback</div>
+          </article>
+          <article class="phase">
+            <time>Weeks 7–9 · Assignment 3</time>
+            <h3>Blockout → world</h3>
+            <p>Spatial composition led into navigation and environmental storytelling. Asset, light and sound choices then shaped the route from Arrival and Order to the underwater collapse.</p>
+            <div class="evidence">Unity environment · movement + atmosphere</div>
+          </article>
+          <article class="phase">
+            <time>Weeks 10–12 · Assignment 4</time>
+            <h3>Reflection → folio</h3>
+            <p>Critical reflection and project statements became a scrolling narrative. Wireframing, grid, accessibility and separate desktop and mobile layouts shaped how a reader encounters it.</p>
+            <div class="evidence">Single page · two screen layouts</div>
+          </article>
+        </div>
+        <p class="arc-note">Drawing, comparing colours and watching someone explore the environment each gave me a different way to question a design decision.</p>
+        <div class="link-row"><a class="button" href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer" style="border-color:#f4f0e4;color:#f4f0e4">Read the course journal <span class="arrow" aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="shell reflection" aria-labelledby="reflection-title">
+      <div><div class="section-kicker">A practice still forming</div><h2 id="reflection-title">What I want my work to make possible.</h2></div>
+      <div class="reflection-copy">
+        <p class="lead">I am most interested when a design lets someone discover meaning at their own pace: by noticing a cut, trying a symbol, or choosing to keep walking.</p>
+        <p>That interest connects the three projects, but each one also taught me a different limit. A montage can become vague if its fragments do not share an emotional direction. An icon system can become opaque if its forms are not legible without words. A navigable environment can be beautifully made and still leave its intention unexplained if I show only the final build.</p>
+        <p>The feedback on Descent helped me see that documentation is part of the design practice. I need to make my decisions visible: what I tried, what changed, how a test affected the route, and why the final transition works the way it does. Watching the recorded playthrough made this practical: the player looked towards an outer edge that I had paid less attention to while building. Documentation helped me see a specific improvement rather than simply describe the atmosphere I wanted.</p>
+      </div>
+    </section>
+
+    <section class="future" id="future" aria-labelledby="future-title">
+      <div class="shell future-grid">
+        <div><div class="section-kicker">The next direction</div><h2 id="future-title">I want to design the spaces between events.</h2></div>
+        <div class="future-copy">
+          <p>Across the rest of the program, I plan to specialise in <strong>interactive environment design and spatial storytelling for games</strong>. I want to combine level layout, visual atmosphere, sound and interaction so that a player can understand a change by moving through it.</p>
+          <p>I want to keep developing my drawing and digital art alongside practical skills in Unity. My aim is to make environments that are visually distinctive but also readable: places where a small shift in light, sound or scale can change what the player believes about the world.</p>
+          <p>This semester began with fragments of everyday life. It ends with a more specific question I want to keep exploring: how can a designed space tell someone that they have changed?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="archive" aria-labelledby="archive-title">
+      <div class="shell archive-inner">
+        <div><div class="section-kicker">Working notes & course documentation</div><h2 id="archive-title">The process lives in the journal too.</h2><p>The journal follows the semester from my Week 1 starting point through storyboarding, sound, icon design, spatial storytelling and the final folio. It brings together the drawings, colour studies, sound choices, Unity development and reflections behind the finished projects.</p>
+          <div class="link-row"><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/hi-there/" target="_blank" rel="noreferrer">Week 1 · Starting point <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/week2/" target="_blank" rel="noreferrer">Week 2 · Storyboard & sound <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/week-3/" target="_blank" rel="noreferrer">Week 3 · Project concept <span class="arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+        <a class="button" href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer">Open Ashe's Studio 1 Journal <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="shell footer-inner"><span>Ashe O. · COMM2749 · 2026</span><span class="fine-print">A reflection on sequence, feedback and spatial storytelling.</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const layout = params.get('layout') === 'mobile' ? 'mobile' : 'desktop';
+      document.documentElement.dataset.layout = layout;
+      document.querySelectorAll('[data-view]').forEach((link) => {
+        if (link.dataset.view === layout) link.setAttribute('aria-current', 'page');
+      });
+
+      let activeSound = null;
+      let lastHoverSoundAt = 0;
+      const playSound = (button) => {
+        if (activeSound) {
+          activeSound.pause();
+          activeSound.currentTime = 0;
+        }
+        activeSound = new Audio(button.dataset.audio);
+        activeSound.volume = Number(button.dataset.volume ?? 1);
+        activeSound.currentTime = 0;
+        activeSound.play().catch(() => {});
+      };
+
+      document.querySelectorAll('.icon-tile[data-audio]').forEach((button) => {
+        button.addEventListener('pointerenter', (event) => {
+          if (event.pointerType === 'mouse') {
+            lastHoverSoundAt = performance.now();
+            playSound(button);
+          }
+        });
+        button.addEventListener('focus', () => playSound(button));
+        button.addEventListener('click', () => {
+          if (performance.now() - lastHoverSoundAt > 300) playSound(button);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+
