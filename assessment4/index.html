@@ -41,6 +41,9 @@
     .hero h1 { max-width: 740px; margin: 1.2rem 0 1.45rem; font: 400 clamp(4.6rem, 8.8vw, 9rem)/.88 var(--serif); letter-spacing: -.07em; }
     .hero h1 span { display: block; color: var(--signal); font-style: italic; }
     .hero-intro { max-width: 540px; font-size: clamp(1rem, 1.25vw, 1.17rem); color: #d3d8cd; }
+    .hero-journal { margin: 1.3rem 0 0; font-size: .88rem; }
+    .hero-journal a { color: #c5c5c3; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+    .hero-journal a:hover { color: #fff; }
     .intro { display: grid; grid-template-columns: .65fr 1.35fr; gap: 9vw; padding: 115px 0 105px; border-bottom: 1px solid var(--line); }
     .intro h2, .reflection h2, .future h2 { margin: 0; font: 400 clamp(2.4rem, 4.5vw, 4.9rem)/.98 var(--serif); letter-spacing: -.055em; }
     .intro-copy { max-width: 760px; font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.65; }
@@ -222,7 +225,8 @@
     .hero > .shell { position: relative; z-index: 1; }
     .hero-inner { z-index: 1; grid-template-columns: minmax(0, 1fr); min-height: 0; padding: 100px 0 112px; }
     .icon-tile img { filter: grayscale(1); }
-    .eyebrow, .section-kicker, .writing h3, .future .section-kicker { color: #777; }
+    .eyebrow, .section-kicker, .writing h3 { color: #636363; }
+    .future .section-kicker { color: #aaa; }
     .hero .eyebrow, .hero .section-kicker { color: #aaa; }
     .hero h1 span { background: linear-gradient(125deg, #f4f4f2 12%, #aaa 78%); background-clip: text; -webkit-background-clip: text; color: transparent; }
     .stage-index, .stage-mark, .phase time, .future-copy strong { color: #ddd; }
@@ -232,6 +236,8 @@
     .button .arrow { color: #555; }
     .film-panel, .system-panel { background-color: rgba(25,25,25,.68); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E"), linear-gradient(135deg, rgba(255,255,255,.12), transparent 42%, rgba(255,255,255,.035)); background-size: 180px 180px, auto; backdrop-filter: blur(24px) saturate(.62); -webkit-backdrop-filter: blur(24px) saturate(.62); border: 1px solid rgba(255,255,255,.25); color: #eee; }
     .film-panel iframe { background: #080808; }
+    .unity-panel { background:#111; border:1px solid rgba(17,17,17,.2); box-shadow:0 26px 65px rgba(0,0,0,.16); }
+    .unity-panel iframe { display:block; width:100%; aspect-ratio:16/10; border:0; background:#111; }
     .film-caption, .system-top, .system-foot { color: #aaa; }
     .icon-tile { background: #292929; }
     .system-foot { border-color: #555; }
@@ -258,12 +264,6 @@
     <div class="shell">
       <div class="masthead">
         <a href="#top" aria-label="Ashe O., top of page"><strong>Ashe O.</strong></a>
-        <nav aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#practice">Practice</a>
-          <a href="#course-arc">Arc</a>
-          <a href="#future">Next</a>
-        </nav>
         <div class="view-switch" aria-label="Choose page layout">
           <span>View</span>
           <a href="?layout=desktop" data-view="desktop">Desktop</a>
@@ -275,6 +275,7 @@
           <div class="eyebrow">COMM2749 · Digital Media Studio 1 · 2026</div>
           <h1>From fragments <span>to worlds.</span></h1>
           <p class="hero-intro">Over twelve weeks, I moved from editing moments into a self-portrait, to designing a responsive system of icons, to building a space a player could move through. This is a record of how I learned to make meaning through sequence, interaction and place.</p>
+          <p class="hero-journal"><a href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer">Process journal <span aria-hidden="true">↗</span></a></p>
         </div>
       </div>
     </div>
@@ -309,10 +310,10 @@
         </div>
         <div class="writing">
           <h3>What I chose to show</h3>
-<p>The campus, my friends, drawing and an ACG merchandise shop each show a different part of my life. I wanted quieter moments alongside social ones, because spending time alone also belongs in this portrait. Drawing connects my everyday habits with the hope of doing work I enjoy in the future.</p>
-<p>I filmed drawing near desk height to make it feel quiet and close, and campus at walking height to share my viewpoint. Warm-looking locations and space around the subject kept the images relaxed. I wanted these qualities to come from the footage itself.</p>
-<p>Sound sometimes suggests an inner feeling while the image shows an ordinary activity. Letting it begin before a cut or linger afterwards connects different places, like a memory continuing into the next moment. Longer shots at emotional pauses, especially after quicker cuts, give the edit room to breathe. I learned to follow the feeling of a moment as well as what happened.</p>
-<div class="link-row"><a class="button" href="https://www.youtube.com/watch?v=buGP9XVc-8w" target="_blank" rel="noreferrer">Watch the film <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/week2/" target="_blank" rel="noreferrer">Storyboard & sound notes <span class="arrow" aria-hidden="true">↗</span></a></div>
+<p>I chose the campus, friends, drawing and an ACG merchandise shop because these are places and activities I spend time with. The quieter shots mattered too: being alone belongs in the portrait as much as social life. Filming drawing at desk height made it feel close, while walking through campus at eye level shared my viewpoint. Warm light and space around the subject came from filming choices rather than filters.</p>
+<p>I wanted the edit to follow how these moments felt. J-cuts and L-cuts let sound arrive early or linger after an image, so separate places could feel connected like a memory. Sometimes the image shows an ordinary activity while the sound suggests an inner feeling. Longer shots after quicker cuts gave the rhythm room to breathe.</p>
+<p>This made me more selective about footage. An attractive shot still needed to say something about my life or help the emotional sequence. That question became useful later when choosing what belonged in the folio.</p>
+<div class="link-row"><a class="button" href="https://www.youtube.com/watch?v=buGP9XVc-8w" target="_blank" rel="noreferrer">Watch the film <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/10/25/week-10/" target="_blank" rel="noreferrer">Read the reflection <span class="arrow" aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </section>
@@ -346,10 +347,10 @@
         </div>
         <div class="writing">
           <h3>Finding a shared language</h3>
-<p>My apple and chess thumbnails explored different directions. Chess gave me a stronger connection between the symbols: each piece has a different role within the same system. Flattening the sketches made their edges and scale more consistent, although some of the loose character of the drawing disappeared.</p>
-<p>I compared monochromatic, analogous, complementary and triadic palettes. The finished page uses cream on charcoal, with violet for the active state. Keeping that change consistent across the set felt clearer than giving every icon a different colour. The preview here follows the folio’s monochrome treatment; the original page keeps the cream and violet palette.</p>
-<p>Each icon has an individual sound and alternate image. The repeated interaction helps them feel related, while the sounds suggest different characters and actions. Some abstract symbols are less immediately recognisable than the chess pieces. Next time, I would compare what someone recognises at a small size before polishing every outline.</p>
-<div class="link-row"><a class="button" href="https://animaeashe.github.io/Studio1/" target="_blank" rel="noreferrer">Explore all nine icons <span class="arrow" aria-hidden="true">↗</span></a></div>
+<p>I usually prefer spontaneous drawing, so working with a system pushed me towards a different kind of decision. Chess gave the symbols recognisable roles and relationships. Moving from thumbnails to Illustrator made the edges and proportions more consistent, but also removed some of the loose line quality I enjoy. I chose consistency because the shapes had to work together at a small size.</p>
+<p>The colour studies compared four harmonies. For the final page, cream on charcoal keeps the normal state quiet and violet marks a response. Repeating the same change across the set gives it unity. Each icon has its own sound, but the interaction stays consistent. I began to see behaviour as part of the visual language.</p>
+<p>Some abstract symbols are still less clear than the chess pieces. Uniform styling does not solve that. Next time I would check what someone recognises before polishing every outline. The preview here is monochrome; the original page retains the cream and violet.</p>
+<div class="link-row"><a class="button" href="https://animaeashe.github.io/Studio1/" target="_blank" rel="noreferrer">Explore all nine icons <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/10/25/week-10/" target="_blank" rel="noreferrer">Read the reflection <span class="arrow" aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </section>
@@ -364,23 +365,17 @@
       </div>
       <div class="project-body">
         <div class="visual">
-          <div class="stage-card" role="img" aria-label="Four encounter stages from Arrival through Order and Descent to underwater Collapse">
-            <div class="stage-list">
-              <div class="stage"><span class="stage-index">01</span><div><strong>Arrival</strong><small>Threshold / orientation</small></div><span class="stage-mark">↘</span></div>
-              <div class="stage"><span class="stage-index">02</span><div><strong>Order museum</strong><small>Display / measured rhythm</small></div><span class="stage-mark">▦</span></div>
-              <div class="stage"><span class="stage-index">03</span><div><strong>Descent</strong><small>10-second rumble / music fades</small></div><span class="stage-mark">↓</span></div>
-              <div class="stage"><span class="stage-index">04</span><div><strong>Underwater collapse</strong><small>Deep Sea · Calm · Bubbles</small></div><span class="stage-mark">≈</span></div>
-            </div>
-            <div class="sound-strip"><span>Rumble</span><div class="wave" aria-hidden="true"></div><span>Water</span></div>
+          <div class="unity-panel">
+            <iframe src="assets/descent/index.html" title="Play The Descent — interactive Unity environment" loading="lazy" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>
           </div>
         </div>
         <div class="writing">
           <h3>Building a place to explore</h3>
 <p>I began with a pavilion and garden corridor, with birds and wind outside. The gallery is more controlled: a geometric sculpture is fenced off and lit from below. Passing through a dark opening and dropping into a world of whale and pterosaur skeletons breaks that order. I wanted the final space to feel strange and much larger than the place before it.</p>
 <p>In the film I controlled the frame; here the player can stop, turn back or look away. Working at eye level made scale and visibility more important than they seemed from above. Sound changes with the setting too: a ten-second rumble and fading music lead into the underwater layers.</p>
-<p>In my friend’s recorded test, they approached the sculpture, looked up, and explored both skeletons. The main landmarks drew attention, but the recording alone cannot tell me whether the story was understood. Turning towards the edge also exposed a bright outer horizon. I would refine that boundary and the lighting so the underwater atmosphere holds up from more directions.</p>
-<div class="feedback"><strong>What the feedback changed:</strong> my tutor liked the crafted spaces and transitions, but found too little explanation of the idea and development. That made me realise that showing the final build was only part of presenting the work. The journal now explains the route, sound decisions and what the recorded test revealed.</div>
-<div class="link-row"><a class="button" href="https://play.unity.com/en/games/258a7515-2c7e-4d07-a147-874cfa64c1a3/as3" target="_blank" rel="noreferrer">Play the Unity build <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://www.youtube.com/watch?v=vzTPUF3kqrc" target="_blank" rel="noreferrer">Watch the 2:15 play-through <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer">Process journal <span class="arrow" aria-hidden="true">↗</span></a></div>
+<p>My friend stopped at the sculpture and explored the skeletons in the recorded test. This showed that the landmarks drew attention, but did not prove that the story was understood. Their camera also faced a bright outer horizon I had overlooked. I would refine the boundary and lighting so the underwater feeling survives a turn away from the main view. That is a proposed improvement, not a change already made to the build.</p>
+<div class="feedback"><strong>What challenged my assumption:</strong> the environment felt clear to me because I knew its intention. My tutor liked the spaces and transitions, but found too little explanation of their development. The feedback and recorded test showed two different gaps: what I had not explained, and what I had not noticed from another viewpoint.</div>
+<div class="link-row"><a class="button" href="https://www.youtube.com/watch?v=vzTPUF3kqrc" target="_blank" rel="noreferrer">Watch the play-through <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/10/25/week-9/" target="_blank" rel="noreferrer">Playtest & observations <span class="arrow" aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </section>
@@ -392,61 +387,49 @@
           <p>The course kept bringing me back to the same practical question: what should the audience do, notice or feel next? The answer changed with the medium.</p>
         </div>
         <div class="steps">
-          <article class="step"><span class="n">01</span><h3>Storyboard</h3><p>Turn a loose idea into a sequence. Decide what each shot contributes before the edit grows into a collection of attractive moments.</p></article>
-          <article class="step"><span class="n">02</span><h3>Bridge</h3><p>Use rhythm and sound to connect discontinuous images. Let laughter carry into waves, then allow the quieter shot to breathe.</p></article>
-          <article class="step"><span class="n">03</span><h3>Respond</h3><p>Give each icon a distinct but coherent visual and audio response. Interaction should clarify the system, not interrupt it.</p></article>
-          <article class="step"><span class="n">04</span><h3>Navigate</h3><p>Shape a route through encounters. Test whether layout, scale, light and sound prepare the player for each change.</p></article>
+          <article class="step"><span class="n">01</span><h3>Make it concrete</h3><p>I often began with a mood. A storyboard or a small sketch gave me something I could arrange and change.</p></article>
+          <article class="step"><span class="n">02</span><h3>Choose what matters</h3><p>A shot, colour or object needed a reason to stay. More material did not always make the idea clearer.</p></article>
+          <article class="step"><span class="n">03</span><h3>Consider the response</h3><p>The icon page made me think about what happens after someone acts, as well as what they first see.</p></article>
+          <article class="step"><span class="n">04</span><h3>Look from elsewhere</h3><p>The playtest showed me a view I had overlooked. Knowing the scene well had also made some problems less visible to me.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="shell" aria-labelledby="process-title" style="padding:70px 0">
-      <div class="section-kicker">A few decisions behind the work</div>
-      <h2 id="process-title" style="font:400 clamp(2rem,4vw,3.5rem)/1.1 Georgia,serif">What the process helped me see.</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px">
-        <figure style="margin:0"><img src="assets/week4/assignment2-system-king-queen-knight.jpg" alt="Thumbnail sketches comparing different crown and knight silhouettes" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#eee"><figcaption><strong>Sketching the system.</strong> Comparing silhouettes on one sheet made the differences between related pieces easier to see.</figcaption></figure>
-        <figure style="margin:0"><img src="assets/process/colour-study.png" alt="Four colour harmony studies: monochromatic, analogous, complementary and triadic" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#eee"><figcaption><strong>Keeping a shared palette.</strong> The colour study helped compare a quiet base with a more noticeable interaction colour.</figcaption></figure>
-        <figure style="margin:0"><img src="assets/process/unity-corridor.png" alt="Unity editor showing the arched garden corridor and an eye-level camera preview" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#181818"><figcaption><strong>Looking from inside.</strong> The camera preview helped compare the scene layout with what the player could actually see.</figcaption></figure>
-        <figure style="margin:0"><img src="assets/process/playtest-boundary.png" alt="Frame from the friend's recorded playtest showing the bright boundary beyond the final environment" loading="lazy" style="width:100%;height:250px;object-fit:contain;background:#181818"><figcaption><strong>A view I had overlooked.</strong> The recorded test exposed a bright outer horizon. Refining that boundary would help sustain the underwater atmosphere.</figcaption></figure>
       </div>
     </section>
 
     <section class="course-arc" id="course-arc" aria-labelledby="course-arc-title">
       <div class="shell">
-        <div class="section-kicker">Weeks 4–12 · Course sequence</div>
-        <h2 id="course-arc-title">Each new medium asked for a new kind of evidence.</h2>
-        <p class="course-arc-intro">The later modules map a progression from making a visual idea coherent, to shaping a navigable experience, to explaining the practice that connects the work.</p>
+        <div class="section-kicker">Weeks 10–12 · Making this folio</div>
+        <h2 id="course-arc-title">Learning what to leave out.</h2>
+        <p class="course-arc-intro">The folio became another design exercise. I wanted a cinematic atmosphere, but the projects and their decisions still had to be easy to find.</p>
         <div class="phase-grid">
           <article class="phase">
-            <time>Weeks 4–6 · Assignment 2</time>
-            <h3>Concept → system</h3>
-            <p>Design thinking and thumbnails established intent; shape, colour and flat design helped unify the icon set; HTML, image swaps and sound made the symbols responsive.</p>
-            <div class="evidence">Nine icons · visual + audio feedback</div>
+            <div class="section-kicker">Selection</div>
+            <h3>Fewer, more specific examples</h3>
+            <p>I chose material that shows a decision: the sound plan, icon sketches, colour comparison and a view from the playtest. A small selection helps explain the work without turning the page into a screenshot archive.</p>
+            <div class="evidence">Week 10 · Content study</div>
           </article>
           <article class="phase">
-            <time>Weeks 7–9 · Assignment 3</time>
-            <h3>Blockout → world</h3>
-            <p>Spatial composition led into navigation and environmental storytelling. Asset, light and sound choices then shaped the route from Arrival and Order to the underwater collapse.</p>
-            <div class="evidence">Unity environment · movement + atmosphere</div>
+            <div class="section-kicker">Layout</div>
+            <h3>Work beside reflection</h3>
+            <p>I preferred paired previews and writing on desktop because the reader can connect them without scrolling back. Mobile uses one column. I removed the opening diagram and counters because they competed with the actual projects.</p>
+            <div class="evidence">Week 11 · Layout comparison</div>
           </article>
           <article class="phase">
-            <time>Weeks 10–12 · Assignment 4</time>
-            <h3>Reflection → folio</h3>
-            <p>Critical reflection and project statements became a scrolling narrative. Wireframing, grid, accessibility and separate desktop and mobile layouts shaped how a reader encounters it.</p>
-            <div class="evidence">Single page · two screen layouts</div>
+            <div class="section-kicker">Readability</div>
+            <h3>Atmosphere behind the words</h3>
+            <p>Grain and frosted surfaces give the page depth, but small labels still need contrast. The CSS colour check led me to darken light-section labels from #777777 to #636363, raising the main pair from 3.96:1 to 5.31:1.</p>
+            <div class="evidence">Week 11 · Selected colour-pair check</div>
           </article>
         </div>
-        <p class="arc-note">Drawing, comparing colours and watching someone explore the environment each gave me a different way to question a design decision.</p>
-        <div class="link-row"><a class="button" href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer" style="border-color:#f4f0e4;color:#f4f0e4">Read the course journal <span class="arrow" aria-hidden="true">↗</span></a></div>
+        <div class="link-row"><a class="button" href="https://studio1ashe.wordpress.com/2026/10/25/week-11/" target="_blank" rel="noreferrer" style="border-color:#f4f0e4;color:#f4f0e4">Layout & accessibility notes <span class="arrow" aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
     <section class="shell reflection" aria-labelledby="reflection-title">
       <div><div class="section-kicker">A practice still forming</div><h2 id="reflection-title">What I want my work to make possible.</h2></div>
       <div class="reflection-copy">
-        <p class="lead">I am most interested when a design lets someone discover meaning at their own pace: by noticing a cut, trying a symbol, or choosing to keep walking.</p>
-        <p>That interest connects the three projects, but each one also taught me a different limit. A montage can become vague if its fragments do not share an emotional direction. An icon system can become opaque if its forms are not legible without words. A navigable environment can be beautifully made and still leave its intention unexplained if I show only the final build.</p>
-        <p>The feedback on Descent helped me see that documentation is part of the design practice. I need to make my decisions visible: what I tried, what changed, how a test affected the route, and why the final transition works the way it does. Watching the recorded playthrough made this practical: the player looked towards an outer edge that I had paid less attention to while building. Documentation helped me see a specific improvement rather than simply describe the atmosphere I wanted.</p>
+        <p class="lead">Walking through the Unity corridor felt different from looking at it from above. I became interested in making a place someone could experience at their own pace.</p>
+        <p>The earlier projects still belong in that direction. The film taught me to think about emotional rhythm and sound. The icons made me work with consistent shapes and responses, even when I missed the freedom of drawing. In an environment, both matter: atmosphere can draw someone in, while a clear visual language helps them find their way.</p>
+        <p>Explaining the work was harder than making it look finished. I had left too many decisions to memory. Next semester I want to record small choices as I go, including ideas I drop and views that do not work. That would make it easier to compare versions and explain why something changed.</p>
       </div>
     </section>
 
@@ -454,19 +437,9 @@
       <div class="shell future-grid">
         <div><div class="section-kicker">The next direction</div><h2 id="future-title">I want to design the spaces between events.</h2></div>
         <div class="future-copy">
-          <p>Across the rest of the program, I plan to specialise in <strong>interactive environment design and spatial storytelling for games</strong>. I want to combine level layout, visual atmosphere, sound and interaction so that a player can understand a change by moving through it.</p>
-          <p>I want to keep developing my drawing and digital art alongside practical skills in Unity. My aim is to make environments that are visually distinctive but also readable: places where a small shift in light, sound or scale can change what the player believes about the world.</p>
-          <p>This semester began with fragments of everyday life. It ends with a more specific question I want to keep exploring: how can a designed space tell someone that they have changed?</p>
+          <p>Across the rest of the program, I plan to specialise in <strong>game environment design and spatial storytelling</strong>. I want to develop my drawing and digital art alongside Unity, bringing the film’s attention to sound and pacing together with the icons’ visual consistency.</p>
+          <p>I am especially interested in transitions: how an ordinary corridor can prepare someone for a strange space, or how a sound can change the feeling of entering it. My next step is to make those atmospheres hold up from the player’s viewpoint, including the directions I would not naturally choose to look.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="archive" aria-labelledby="archive-title">
-      <div class="shell archive-inner">
-        <div><div class="section-kicker">Working notes & course documentation</div><h2 id="archive-title">The process lives in the journal too.</h2><p>The journal follows the semester from my Week 1 starting point through storyboarding, sound, icon design, spatial storytelling and the final folio. It brings together the drawings, colour studies, sound choices, Unity development and reflections behind the finished projects.</p>
-          <div class="link-row"><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/hi-there/" target="_blank" rel="noreferrer">Week 1 · Starting point <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/week2/" target="_blank" rel="noreferrer">Week 2 · Storyboard & sound <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="https://studio1ashe.wordpress.com/2026/08/16/week-3/" target="_blank" rel="noreferrer">Week 3 · Project concept <span class="arrow" aria-hidden="true">↗</span></a></div>
-        </div>
-        <a class="button" href="https://studio1ashe.wordpress.com/" target="_blank" rel="noreferrer">Open Ashe's Studio 1 Journal <span class="arrow" aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>

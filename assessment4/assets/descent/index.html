@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Descent — Unity player</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#111;color:#eee;font-family:Arial,sans-serif}
+    #screen{position:relative;width:100%;height:100%}canvas{display:block;width:100%;height:100%;background:#111}
+    #cover{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(18px,5vw,40px);background:linear-gradient(0deg,rgba(0,0,0,.88),rgba(0,0,0,.08) 80%),url('poster.png') center/cover}
+    h1{font:400 clamp(30px,6vw,54px)/1 Georgia,serif;margin:0 0 16px}
+    button,a{font:14px Arial,sans-serif;color:inherit;cursor:pointer}#launch{display:inline-block;padding:12px 19px;background:#eee;color:#111;border:0;text-decoration:none}
+    #status{font-size:13px;line-height:1.5;max-width:42ch;margin:12px 0 0}#full{position:absolute;top:12px;right:12px;border:1px solid #aaa;background:#111b;padding:8px 12px;display:none}
+    :focus-visible{outline:3px solid white;outline-offset:4px}
+  </style>
+</head>
+<body>
+  <div id="screen">
+    <canvas id="game" width="960" height="600" tabindex="0" aria-label="The Descent first-person Unity environment"></canvas>
+    <div id="cover"><h1>The Descent</h1><a id="launch" href="https://play.unity.com/en/games/258a7515-2c7e-4d07-a147-874cfa64c1a3/as3" target="_blank" rel="noreferrer">Play on Unity Play ↗</a><p id="status">First-person environment · keyboard and mouse</p></div>
+    <button id="full" type="button" aria-label="Enter game fullscreen">Fullscreen</button>
+  </div>
+  <script>
+    const launch=document.querySelector('#launch'),status=document.querySelector('#status'),cover=document.querySelector('#cover'),canvas=document.querySelector('#game');
+    if(location.protocol!=='file:'){
+      launch.textContent='Play environment';
+      launch.addEventListener('click',async function start(event){
+        event.preventDefault();launch.removeEventListener('click',start);launch.style.display='none';status.textContent='Loading…';
+        try{
+          await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='Build/as3.loader.js';script.onload=resolve;script.onerror=reject;document.body.appendChild(script)});
+          const instance=await createUnityInstance(canvas,{arguments:[],dataUrl:'Build/as3.data',frameworkUrl:'Build/as3.framework.js',codeUrl:'Build/as3.wasm',streamingAssetsUrl:'StreamingAssets',companyName:'DefaultCompany',productName:'Assessment 3',productVersion:'0.1.0',showBanner:(message,type)=>{if(type==='error')status.textContent=message}},progress=>status.textContent='Loading '+Math.round(progress*100)+'%');
+          cover.style.display='none';canvas.focus();const full=document.querySelector('#full');full.style.display='block';full.onclick=()=>instance.SetFullscreen(1);
+        }catch(error){status.textContent='The embedded game could not load. Open it on Unity Play instead.';launch.textContent='Open Unity Play ↗';launch.style.display='inline-block';}
+      });
+    }
+  </script>
+</body>
+</html>
